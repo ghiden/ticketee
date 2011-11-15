@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Ticketee</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Ticketee</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
 
-<%= yield %>
+  <body>
+    <% flash.each do |key, value| %>
+      <div class="flash" id="<%= key %>">
+        <%= value %>
+      </div>
+    <% end %>
 
-</body>
+    <%= yield %>
+
+  </body>
 </html>
