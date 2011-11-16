@@ -22,6 +22,10 @@ Then /^I should see "([^"]*)"$/ do |arg1|
   page.has_content?(arg1).should be_true
 end
 
+Then /^I should not see "([^"]*)"$/ do |arg1|
+  page.has_content?(arg1).should be_false
+end
+
 Then /^I should be on the project page for "([^"]*)"$/ do |arg1|
   current_path.should == project_path(Project.find_by_name!(arg1))
 end
