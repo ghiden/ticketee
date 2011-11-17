@@ -30,7 +30,12 @@ Then /^I should be on the project page for "([^"]*)"$/ do |arg1|
   current_path.should == project_path(Project.find_by_name!(arg1))
 end
 
-Given /^there is a project called "([^"]*)"$/ do |name|
-  Factory(:project, :name => name)
+Given /^that project has a ticket:$/ do |table|
+  table.hashes.each do |attributes|
+    @project.tickets.create!(attributes)
+  end
 end
 
+Then /^I should see "([^"]*)" within "([^"]*)"$/ do |arg1, arg2|
+  find(arg2).has_content?(arg1).should be_true
+end
