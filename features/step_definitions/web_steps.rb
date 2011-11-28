@@ -39,3 +39,8 @@ end
 Then /^I should see "([^"]*)" within "([^"]*)"$/ do |arg1, arg2|
   find(arg2).has_content?(arg1).should be_true
 end
+
+Then /^I check "([^"]*)"$/ do |box|
+  check(box)
+end
+
