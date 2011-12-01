@@ -9,9 +9,15 @@ Ticketee::Application.routes.draw do
   end
 
   root :to => 'projects#index'
+
+  put '/admin/users/:user_id/permissions',
+    :to => 'admin/permissions#update',
+    :as => :update_user_permissions
   
   namespace :admin do
     root :to => "base#index"
-    resources :users
+    resources :users do
+      resources :permissions
+    end
   end
 end
