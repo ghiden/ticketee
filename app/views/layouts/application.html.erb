@@ -14,6 +14,8 @@
   </head>
 
   <body>
+    <h1><%= link_to "Ticketee", root_path %></h1>
+
     <% flash.each do |key, value| %>
       <div class="flash" id="<%= key %>">
         <%= value %>
@@ -22,7 +24,7 @@
 
     <nav>
       <%= admins_only do %>
-        <%= link_to "Admin", admin_root_path %><br>
+        <%= link_to "Admin", admin_root_path %>
       <% end %>
       <% if user_signed_in? %>
         Signed in as <%= current_user.email %>
@@ -33,7 +35,6 @@
       <% end %>
     </nav>
 
-    <h1><%= link_to "Ticketee", root_path %></h1>
     <%= yield %>
 
   </body>
