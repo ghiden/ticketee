@@ -8,6 +8,8 @@ Ticketee::Application.routes.draw do
     resources :tickets
   end
 
+  resources :files
+
   root :to => 'projects#index'
 
   put '/admin/users/:user_id/permissions',
