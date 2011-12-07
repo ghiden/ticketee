@@ -35,11 +35,14 @@ Feature: Creating Tickets
     Then I should see "Ticket has not been created."
     And I should see "Description is too short"
 
+  @javascript
   Scenario: Creating a ticket with an attachment
     When I fill in "Title" with "Add documenttation for blank tag"
     And I fill in "Description" with "The blank tag has an undocumented speed attribute"
     And I attach the file "spec/fixtures/speed.txt" to "File #1"
+    And I follow "Add another file"
     And I attach the file "spec/fixtures/spin.txt" to "File #2"
+    And I follow "Add another file"
     And I attach the file "spec/fixtures/gradient.txt" to "File #3"
     And I press "Create Ticket"
     Then I should see "Ticket has been created."

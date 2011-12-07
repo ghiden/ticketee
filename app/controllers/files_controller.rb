@@ -11,4 +11,11 @@ class FilesController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def new
+    @ticket = Ticket.new
+    asset = @ticket.assets.build
+    render :partial => "files/form", 
+      :locals => {:asset => asset, :number => params[:number].to_i }
+  end
 end
