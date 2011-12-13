@@ -117,6 +117,10 @@ menu, #ticket .state, .states {
   float: right;
 }
 
+#comments .states .state {
+  float: left;
+}
+
 #ticket section {
   clear: both;
 }
