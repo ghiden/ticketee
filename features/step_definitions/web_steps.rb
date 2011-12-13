@@ -55,3 +55,7 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+
+When /^I select "([^"]*)" from "([^"]*)"$/ do |value, field|
+  select(value, :from => field)
+end
