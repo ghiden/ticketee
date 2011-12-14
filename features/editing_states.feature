@@ -11,13 +11,21 @@ Feature: Editing states
     Given there is a state called "No Name"
     When I follow "Admin"
     And I follow "States"
-    And I follow "No Name"
-    And I follow "Edit State"
 
   Scenario: Updating a state when it is not assigned
+    And I follow "No Name"
+    And I follow "Edit State"
     And I fill in "Name" with "Review"
     And I press "Update State"
     Then I should see "State has been updated."
+
+  Scenario: Updating a state with invalid attributes fails
+    And I follow "No Name"
+    And I follow "Edit State"
+    And I fill in "Name" with ""
+    When I press "Update State"
+    Then I should see "State has not been updated."
+    And I should see "Name can't be blank"
 
   Scenario: Updating a state should fail when it is assigned
     Given there is a project called "Internet Explorer"
@@ -27,12 +35,6 @@ Feature: Editing states
     And "admin@ticketee.com" has created a comment with this state
       | text           | state   |
       | test test test | No Name |
-    And I fill in "Name" with "Review"
-    And I press "Update State"
-    Then I should see "State has assigned tickets."
+    And I follow "No Name"
+    And I should not see "Edit State"
 
-  Scenario: Updating a state with invalid attributes fails
-    And I fill in "Name" with ""
-    When I press "Update State"
-    Then I should see "State has not been updated."
-    And I should see "Name can't be blank"

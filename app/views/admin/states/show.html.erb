@@ -1,7 +1,10 @@
 <h2><%= @state.name %></h2>
-<%= link_to "Edit State", edit_admin_state_path(@state) %>
-<%= link_to "Delete State", 
-  admin_state_path(@state), 
-  :method => :delete,
-  :confirm => "Are you sure you want to delete this state?" %>
-
+<% if @state.tickets.empty? %>
+  <%= link_to "Edit State", edit_admin_state_path(@state) %>
+  <%= link_to "Delete State", 
+    admin_state_path(@state), 
+    :method => :delete,
+    :confirm => "Are you sure you want to delete this state?" %>
+<% else %>
+  <p>Has tickets assigned</p>
+<% end %>

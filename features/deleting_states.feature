@@ -11,9 +11,9 @@ Feature: Deleting states
     Given there is a state called "Dammy"
     When I follow "Admin"
     And I follow "States"
-    And I follow "Dammy"
 
   Scenario: Deleting a state
+    And I follow "Dammy"
     And I follow "Delete State"
     Then I should see "State has been deleted."
     Then I should not see "Dammy"
@@ -26,6 +26,5 @@ Feature: Deleting states
     And "admin@ticketee.com" has created a comment with this state
       | text           | state   |
       | test test test | Dammy |
-    And I follow "Delete State"
-    Then I should see "State has assigned tickets."
-    Then I should see "Dammy"
+    And I follow "Dammy"
+    And I should not see "Delete State"
