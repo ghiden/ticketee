@@ -2,6 +2,6 @@
 
 <ul id="states">
   <% for state in @states %>
-    <li><%= state.name %></li>
+    <li><%= link_to state.name, [:admin, state] %></li>
   <% end %>
 </ul>
