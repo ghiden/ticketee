@@ -1,5 +1,6 @@
 class Admin::StatesController < Admin::BaseController
   before_filter :find_state, :only => [:show, :edit, :update, :destroy]
+  before_filter :assigned?, :only => [:update, :destroy]
 
   def index
     @states = State.all
@@ -43,6 +44,13 @@ class Admin::StatesController < Admin::BaseController
   end
 
   private
+
+  def assigned?
+    if !@state.tickets.empty?
+      flash[:alert] = "State has assigned tickets."
+      redirect_to admin_states_path
+    end
+  end
 
   def find_state
     @state = State.find(params[:id])
