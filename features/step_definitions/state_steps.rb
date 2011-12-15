@@ -10,3 +10,8 @@ Given /^"([^"]*)" has created a comment with this state$/ do |email, table|
     Comment.create!(attributes)
   end
 end
+
+When /^I follow "([^"]*)" for the "([^"]*)" state$/ do |link, name|
+  state = State.find_by_name! name
+  steps(%Q{When I follow "#{link}" within "#state_#{state.id}"})
+end
