@@ -3,6 +3,9 @@
   <br>
   <small>Created by <%= @ticket.user.email %></small>
   <%= simple_format(@ticket.description) %>
+
+  <div id="tags"><%= render @ticket.tags %></div>
+
   <%= render @ticket.state if @ticket.state %>
 
   <% if @ticket.assets.exists? %>
