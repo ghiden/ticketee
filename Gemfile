@@ -37,6 +37,7 @@ gem 'searcher'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.5'
+  gem 'gmail'
 end
 
 group :test do
