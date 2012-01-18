@@ -45,6 +45,11 @@ describe "/api/v1/projects", :type => :api do
   context "creating a project" do
     let(:url) { "/api/v1/projects" }
 
+    before do
+      user.admin = true
+      user.save
+    end
+
     it "successful JSON" do
       post "#{url}.json", :token => token, :project => {:name => "Inspector"}
       project = Project.find_by_name("Inspector")
