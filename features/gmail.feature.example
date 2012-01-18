@@ -19,8 +19,8 @@ Feature: Gmail
 
   # this scenario requires internet connection.
   # when you are running it without one, do this
-  # bin/cucumber features --tag ~@nonet
-  @nonet
+  # bin/cucumber features --tag ~@with_internet
+  @with_internet
   Scenario: Receiving a real-world email
     Given I am signed in as "alice@ticketee.com"
     Given I am on the homepage
