@@ -48,3 +48,12 @@ group :test do
   gem 'email_spec'
   gem 'launchy'
 end
+
+group :development do
+  gem 'capistrano'
+end
+
+group :production do
+  gem 'pg'
+end
+
