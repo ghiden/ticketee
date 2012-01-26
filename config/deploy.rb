@@ -1,3 +1,8 @@
+require 'bundler/capistrano'
+
+$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
+require 'rvm/capistrano'
+
 set :application, "ticketee"
 set :repository,  "git://github.com/ghiden/ticketee.git"
 
