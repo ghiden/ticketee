@@ -57,4 +57,7 @@ Ticketee::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  # url
+  routes.default_url_options[:host]= 'localhost:9080'
 end
