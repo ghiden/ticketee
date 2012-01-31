@@ -1,7 +1,7 @@
 <div id="ticket">
   <h2><%= @ticket.title %></h2>
   <br>
-  <small>Created by <%= @ticket.user.email %></small>
+  <small>Created by <%= @ticket.user.display_name %></small>
   <%= simple_format(@ticket.description) %>
 
   <div id="tags"><%= render @ticket.tags %></div>

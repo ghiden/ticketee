@@ -58,3 +58,5 @@ group :production do
 end
 
 gem 'therubyracer'
+
+gem "oa-oauth", :require => "omniauth/oauth"
