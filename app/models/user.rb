@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  extend OmniauthCallbacks
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -12,21 +14,6 @@ class User < ActiveRecord::Base
 
   before_save :ensure_authentication_token
 
-  def self.find_or_create_for_twitter(response)
-    data = response['extra']['user_hash']
-    if user = User.find_by_twitter_id(data["id"])
-      user
-    else
-      user = User.new(:email => "twitter+#{data["id"]}@example.com",
-                      :password => Devise.friendly_token[0, 20])
-      user.twitter_id = data["id"]
-      user.twitter_screen_name = data["screen_name"]
-      user.twitter_display_name = data["display_name"]
-      user.confirm!
-      user
-    end
-  end
-
   def self.reset_request_count!
     update_all("request_count = 0", "request_count > 0")
   end
@@ -34,6 +21,8 @@ class User < ActiveRecord::Base
   def display_name
     if twitter_id
       "#{twitter_display_name} (@#{twitter_screen_name})"
+    elsif github_id
+      "#{github_display_name} (#{github_user_name})"
     else
       email
     end
