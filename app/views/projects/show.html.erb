@@ -15,6 +15,7 @@
   <%= submit_tag "Search" %>
 <% end %>
 
+<%= paginate @tickets %>
 <ul id="tickets">
   <% @tickets.each do |ticket| %>
     <li>
