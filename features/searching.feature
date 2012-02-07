@@ -38,4 +38,8 @@ Feature: Searching
     Then I should see "Tag!"
     And I should not see "Tagged!"
 
-
+  Scenario: Entering something else
+    When I fill in "Search" with "hello"
+    And I press "Search"
+    Then I should not see "Tag!"
+    And I should not see "Tagged!"
