@@ -61,3 +61,6 @@ end
 gem 'therubyracer'
 
 gem "oa-oauth", :require => "omniauth/oauth"
+
+gem 'delayed_job_active_record'
+gem 'daemons'
